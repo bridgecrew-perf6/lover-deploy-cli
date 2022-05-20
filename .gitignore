@@ -1,0 +1,8 @@
+# workspace
+.idea
+
+# production
+/lib
+
+# dependencies
+/node_modules

@@ -1,0 +1,38 @@
+{
+  "name": "lover-deploy-cli",
+  "version": "0.0.1",
+  "description": "将本地文件上传至远程服务器",
+  "main": "lib/index.js",
+  "bin": {
+    "deploy": "bin/deploy.js"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "publish": "npm run build && npm publish --access=public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loveYouLove97/s-deploy-cli.git"
+  },
+  "keywords": [
+    "deploy",
+    "auto-deploy",
+    "deploy-cli"
+  ],
+  "author": "lover",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loveYouLove97/s-deploy-cli/issues"
+  },
+  "homepage": "https://github.com/loveYouLove97/s-deploy-cli#readme",
+  "devDependencies": {
+    "rollup": "^2.74.0",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "archiver": "^5.3.1",
+    "colors": "^1.4.0",
+    "dayjs": "^1.11.2",
+    "node-ssh": "^12.0.4"
+  }
+}

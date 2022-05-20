@@ -1,0 +1,10 @@
+# workspace
+.idea
+
+# source code
+/src
+.gitignore
+rollup.config.js
+
+# dependencies
+/node_modules
