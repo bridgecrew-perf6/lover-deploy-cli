@@ -1,5 +1,3 @@
-# 前端代码包部署脚手架
-
 ## 一、概述
 
 ### 主要功能
@@ -42,7 +40,8 @@ module.exports = {
 };
 ```
 
-上述配置作用：将本地名为 `dist` 的目录上传至服务器 `localhost` 中 `/root/pages` 上并命名为 `home`，如果之前 `/root/pages`目录中存在 `home` 目录，则之前的 `home` 目录呗重命名为 `home_ + 时间`
+上述配置作用：将本地名为 `dist` 的目录上传至服务器 `localhost` 中 `/root/pages` 上并命名为 `home`，如果之前 `/root/pages`目录中存在 `home` 目录，则之前的 `home`
+目录被重命名为 `home_ + 时间`
 
 ### 3. 运行命令
 
@@ -51,3 +50,19 @@ lover-deploy-cli [config.name]
 # 直接运行 lover-deploy-cli 会读取解析当前路径下的deploy.config.js
 # 运行 lover-deploy-cli config.js 会读取解析当前路径下的 config.js
 ```
+
+## 更新日志
+
+#### v0.1.1
+
+新增 `ssh` 认证方式 - 通过读取私钥文件完成认证
+
+TODO
+
+1. 指定 shell 脚本位置并执行
+1. 对于开启强缓存的版本采用 unzip -n xxx.zip -d ./
+   
+
+
+
+2. 考虑 node 版本

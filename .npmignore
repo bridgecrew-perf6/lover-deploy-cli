@@ -4,7 +4,9 @@
 # source code
 /src
 .gitignore
-rollup.config.js
+.eslintrc.js
+tsconfig.json
 
 # dependencies
 /node_modules
+package-lock.json

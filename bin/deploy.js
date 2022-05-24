@@ -1,19 +1,18 @@
 #!/usr/bin/env node
 
-const path = require("path");
+const {resolve} = require("path");
 const fs = require("fs");
-const deploy = require("../lib");
-const logger = require("../lib/logger");
+const {deploy} = require("../lib");
+const {info, err} = require("../lib/utils/logger");
 
-logger.info("start deploy");
+info("lover-deploy-cli running...");
 
+const curPath = resolve();
 const inputPath = process.argv[2] || "deploy.config.js";
-const configPath = path.join(process.cwd(), inputPath);
+const configPath = resolve(curPath, inputPath);
 
-const isConfigFileExists = fs.existsSync(configPath);
-
-if (!isConfigFileExists) {
-  logger.err("missing config file");
+if (!fs.existsSync(configPath)) {
+  err("missing config file");
   process.exit(1);
 }
 

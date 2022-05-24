@@ -15,8 +15,12 @@ async function deploy(config) {
     server = {},
     serverPackage = {}
   } = config;
-  if (!server.host || !server.username || !server.password) {
+  if (!server.host || !server.username) {
     logger.err("missing server config");
+    process.exit(1);
+  }
+  if (!server.privateKey && !server.password) {
+    logger.err("missing server certification methods");
     process.exit(1);
   }
   if (!serverPackage.path) {
@@ -48,7 +52,7 @@ async function deploy(config) {
     // 5. 判断是否需要备份
     let cmdStr = `if [[ -d "${serverPackage.name}" ]]; then `;
     if (serverPackage.isBackup) {
-      cmdStr = cmdStr + `mv "${serverPackage.name}" "${serverPackage.name}_${dayjs(new Date()).format("YYYY-MM-DD hh:mm:ss")}"; fi`;
+      cmdStr = cmdStr + `mv "${serverPackage.name}" "${serverPackage.name}_${dayjs(new Date()).format("YYYYMMDDHHmmss")}"; fi`;
     } else {
       cmdStr = cmdStr + `rm -rf "${serverPackage.name}"; fi`;
     }
@@ -60,44 +64,6 @@ async function deploy(config) {
     logger.err(e);
     process.exit(1);
   }
-}
-
-/**
- * @description: 压缩本地文件
- * @author: lover
- */
-function compressedFile(filePath, packageName) {
-  return new Promise((resolve, reject) => {
-    logger.info("start compressed file");
-    const file = fs.createWriteStream(localZipFilePath);
-    const archive = archiver("zip", {zlib: {level: 9}});
-    archive.pipe(file);
-    archive.directory(filePath, packageName, null);
-    archive.finalize().then(() => {
-      logger.info("finished compressed");
-    });
-    file.on("close", () => {
-      resolve();
-    }).on("error", err => {
-      reject(err);
-    });
-  });
-}
-
-/**
- * @description: 连接远程服务器
- * @author: lover
- */
-function connectServerBySSH(config, ssh) {
-  return new Promise((resolve, reject) => {
-    logger.info("start connect server");
-    ssh.connect(config).then(() => {
-      logger.info("connected successful");
-      resolve();
-    }).catch(err => {
-      reject(err);
-    });
-  });
 }
 
 /**
