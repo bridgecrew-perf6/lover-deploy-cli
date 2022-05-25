@@ -19,7 +19,8 @@ export interface ScriptConfigs {
   isInServer?: boolean,
   isBeforeUpload?: boolean,
   scripts?: string,
-  path?: string
+  path?: string,
+  name?: string
 }
 
 export interface DeployConfigs {

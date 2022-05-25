@@ -53,16 +53,6 @@ lover-deploy-cli [config.name]
 
 ## 更新日志
 
-#### v0.1.1
+#### v0.2.0
 
 新增 `ssh` 认证方式 - 通过读取私钥文件完成认证
-
-TODO
-
-1. 指定 shell 脚本位置并执行
-1. 对于开启强缓存的版本采用 unzip -n xxx.zip -d ./
-   
-
-
-
-2. 考虑 node 版本

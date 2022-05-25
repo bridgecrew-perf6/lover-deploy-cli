@@ -5,11 +5,11 @@ const fs = require("fs");
 const {deploy} = require("../lib");
 const {info, err} = require("../lib/utils/logger");
 
-info("lover-deploy-cli running...");
-
 const curPath = resolve();
 const inputPath = process.argv[2] || "deploy.config.js";
 const configPath = resolve(curPath, inputPath);
+
+info("lover-deploy-cli running...");
 
 if (!fs.existsSync(configPath)) {
   err("missing config file");
