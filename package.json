@@ -1,8 +1,9 @@
 {
   "name": "lover-deploy-cli",
   "version": "0.2.0",
-  "description": "指定本地文件上传至服务器指定位置",
+  "description": "本地文件上传至服务器",
   "keywords": [
+    "ftp",
     "deploy",
     "auto-deploy",
     "deploy-cli"

@@ -55,6 +55,9 @@ export function connectServerBySSH(config, ssh) {
     if (!server.port) {
       server.port = 22;
     }
+    if (server.privateKey) {
+      server.privateKey = path.resolve(path.resolve(), server.privateKey);
+    }
     info(`connecting ${server.host}@${server.username}`);
     ssh.connect(server).then(() => {
       info(`connected ${server.host}@${server.username} succeed`);
